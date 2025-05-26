@@ -16,7 +16,7 @@ function setup() {
   video.hide();
 
   // 載入 Facemesh 模型
-  facemesh = ml5.facemesh(video, () => {
+  facemesh = ml5.facMesh(video, () => {
     console.log('Facemesh 模型已載入');
   });
   facemesh.on('predict', results => {
