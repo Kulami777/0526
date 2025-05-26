@@ -32,6 +32,6 @@ function draw() {
     noFill();
     stroke(255, 0, 0);
     strokeWeight(4);
-    ellipse(x, y, 100, 100);
+    ellipse(x, y, 50, 50);
   }
 }
