@@ -1,6 +1,6 @@
 let video;
 let facemesh;
-let handPose;
+let handpose; // 修正名稱
 let predictions = [];
 let hands = [];
 
@@ -11,13 +11,25 @@ const rightCheek = [293, 294, 295, 296, 297, 298, 299, 300, 309, 310, 311, 312, 
 
 function setup() {
   createCanvas(640, 480);
-  let video = createCapture(VIDEO);
+  video = createCapture(VIDEO);
   video.size(width, height);
   video.hide();
-}
 
-function modelReady() {
-  console.log('Facemesh 模型已載入');
+  // 初始化 Facemesh 模型
+  facemesh = ml5.facemesh(video, () => {
+    console.log('Facemesh 模型已載入');
+  });
+  facemesh.on('predict', results => {
+    predictions = results;
+  });
+
+  // 初始化 Handpose 模型
+  handpose = ml5.handpose(video, () => {
+    console.log('Handpose 模型已載入');
+  });
+  handpose.on('predict', results => {
+    hands = results;
+  });
 }
 
 function draw() {
