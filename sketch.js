@@ -10,10 +10,7 @@ const leftCheek = [126, 127, 128, 129, 134, 135, 136, 137, 147, 148, 149, 150, 1
 const rightCheek = [293, 294, 295, 296, 297, 298, 299, 300, 309, 310, 311, 312, 313, 314, 324, 325, 326, 327, 328, 329, 330, 331];
 
 function setup() {
-  createCanvas(640, 480).position(
-    (windowWidth - 640) / 2,
-    (windowHeight - 480) / 2
-  );
+  createCanvas(640, 480);
   video = createCapture(VIDEO);
   video.size(width, height);
   video.hide();
@@ -35,6 +32,7 @@ function modelReady() {
 }
 
 function draw() {
+  background(220);
   image(video, 0, 0, width, height);
 
   // 畫出鼻子的紅色圓
